@@ -3,24 +3,32 @@ import "./App.css";
 
 const initialData = {
   "To Do": [
-    "Design UI mockups",
-    "Set up project repository",
-    "Write unit tests",
-    "Integrate payment gateway",
+    "Create a professional resume",
+    "Build a LinkedIn profile",
+    "Research potential companies",
+    "Identify required skills for the desired role",
+    "Set up a GitHub portfolio",
   ],
-  "In Progress": ["Develop authentication flow", "Implement responsive design"],
+  "In Progress": [
+    "Apply to job openings",
+    "Prepare for technical interviews",
+    "Attend networking events",
+    "Participate in coding challenges",
+  ],
   Done: [
-    "Set up CI/CD pipeline",
-    "Conduct code reviews",
-    "Deploy initial version to staging",
+    "Complete online courses",
+    "Update personal projects on GitHub",
+    "Get certifications",
+    "Receive interview calls",
   ],
+  Hired: ["Sign job offer", "Onboard with the company"],
 };
 
 export default function App() {
   return (
     <div style={{ padding: "20px" }}>
       <h1 style={{ textAlign: "center", marginBottom: "30px" }}>
-        Drag and Drop Kanban Board
+        Student Kanban Board
       </h1>
       <DragAndDrop initialState={initialData} />
     </div>

@@ -7,7 +7,7 @@ export default function DragAndDrop({ initialState }) {
   const focusItem = useRef();
   const [focusedItem, setFocusedItem] = useState(null);
 
-  // Load data from localStorage on initial load
+  // localStorage for initial load
   useEffect(() => {
     try {
       const savedData = localStorage.getItem("kanbanData");
@@ -21,7 +21,7 @@ export default function DragAndDrop({ initialState }) {
     }
   }, []);
 
-  // Save data to localStorage whenever data changes
+  // Save data whenever data change
   useEffect(() => {
     try {
       if (data) {
@@ -63,18 +63,9 @@ export default function DragAndDrop({ initialState }) {
   };
 
   const handleKeyDown = (e, item, container) => {
-    if (e.key === "Enter") {
-      // Move item between columns using Enter key
-      const newContainer =
-        container === "To Do"
-          ? "In Progress"
-          : container === "In Progress"
-          ? "Done"
-          : "To Do";
-      handleDrop(e, newContainer);
-    }
+
     if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      // Handle navigation through items with arrow keys
+      
       const items = data[container];
       const currentIndex = items.indexOf(item);
       let newIndex = currentIndex;
@@ -84,7 +75,7 @@ export default function DragAndDrop({ initialState }) {
       if (e.key === "ArrowUp" && currentIndex > 0) {
         newIndex = currentIndex - 1;
       }
-      setFocusedItem(items[newIndex]); // Update focused item
+      setFocusedItem(items[newIndex]); 
     }
   };
 
@@ -106,7 +97,7 @@ export default function DragAndDrop({ initialState }) {
               overflowY: "auto",
               outline: "none",
             }}
-            tabIndex="0" // Make the column focusable
+            tabIndex="0" 
             aria-label={`${container} column`}
           >
             <h2 style={{ textAlign: "center" }}>{container}</h2>
@@ -120,7 +111,7 @@ export default function DragAndDrop({ initialState }) {
                   onDragEnd={handleDragEnd}
                   draggable
                   onKeyDown={(e) => handleKeyDown(e, item, container)}
-                  tabIndex="0" // Allow focus on the item for keyboard navigation
+                  tabIndex="0" 
                   role="listitem"
                   aria-grabbed="false"
                   aria-labelledby={`${container}-${idx}`}
@@ -128,7 +119,7 @@ export default function DragAndDrop({ initialState }) {
                     userSelect: "none",
                     padding: "16px",
                     margin: "8px 0",
-                    backgroundColor: isFocused ? "#d3eaff" : "#fff", // Highlight focused item
+                    backgroundColor: isFocused ? "#d3eaff" : "#fff", 
                     cursor: "move",
                     borderRadius: "5px",
                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
