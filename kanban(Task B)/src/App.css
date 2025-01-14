@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+h1 {
+  color: #333;
+}
+
+h2 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+div[draggable] {
+  transition: transform 0.3s ease;
+}
+
+div[draggable]:active {
+  transform: scale(1.05);
+}
